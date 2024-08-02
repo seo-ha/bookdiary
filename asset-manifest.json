@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/bookdiary/static/css/main.9217e28e.css",
+    "main.js": "/bookdiary/static/js/main.640d50f9.js",
+    "static/js/453.1c48c539.chunk.js": "/bookdiary/static/js/453.1c48c539.chunk.js",
+    "static/media/Pretendard-Light.otf": "/bookdiary/static/media/Pretendard-Light.2cb5a195aebe2c6b471f.otf",
+    "static/media/Pretendard-SemiBold.otf": "/bookdiary/static/media/Pretendard-SemiBold.0cef3019f4c56716d088.otf",
+    "static/media/Pretendard-Medium.otf": "/bookdiary/static/media/Pretendard-Medium.4de9e34f45c4dd53666c.otf",
+    "static/media/Pretendard-Bold.otf": "/bookdiary/static/media/Pretendard-Bold.9378b3708f45f8c7e326.otf",
+    "static/media/Pretendard-Regular.otf": "/bookdiary/static/media/Pretendard-Regular.8c2bcf220fa6ced26fc0.otf",
+    "static/media/Pretendard-ExtraBold.otf": "/bookdiary/static/media/Pretendard-ExtraBold.9e2e4a7b934af8d26724.otf",
+    "static/media/Pretendard-Black.otf": "/bookdiary/static/media/Pretendard-Black.d4e2adbaf04c87486302.otf",
+    "static/media/Pretendard-ExtraLight.otf": "/bookdiary/static/media/Pretendard-ExtraLight.b2f0f7193307817b6f38.otf",
+    "static/media/Pretendard-Thin.otf": "/bookdiary/static/media/Pretendard-Thin.bf4abb209aed8f35d1ca.otf",
+    "index.html": "/bookdiary/index.html",
+    "main.9217e28e.css.map": "/bookdiary/static/css/main.9217e28e.css.map",
+    "main.640d50f9.js.map": "/bookdiary/static/js/main.640d50f9.js.map",
+    "453.1c48c539.chunk.js.map": "/bookdiary/static/js/453.1c48c539.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9217e28e.css",
+    "static/js/main.640d50f9.js"
+  ]
+}
