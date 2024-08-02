@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/bookdiary/static/css/main.9217e28e.css",
-    "main.js": "/bookdiary/static/js/main.640d50f9.js",
+    "main.js": "/bookdiary/static/js/main.c9d06f0b.js",
     "static/js/453.1c48c539.chunk.js": "/bookdiary/static/js/453.1c48c539.chunk.js",
     "static/media/Pretendard-Light.otf": "/bookdiary/static/media/Pretendard-Light.2cb5a195aebe2c6b471f.otf",
     "static/media/Pretendard-SemiBold.otf": "/bookdiary/static/media/Pretendard-SemiBold.0cef3019f4c56716d088.otf",
@@ -14,11 +14,11 @@
     "static/media/Pretendard-Thin.otf": "/bookdiary/static/media/Pretendard-Thin.bf4abb209aed8f35d1ca.otf",
     "index.html": "/bookdiary/index.html",
     "main.9217e28e.css.map": "/bookdiary/static/css/main.9217e28e.css.map",
-    "main.640d50f9.js.map": "/bookdiary/static/js/main.640d50f9.js.map",
+    "main.c9d06f0b.js.map": "/bookdiary/static/js/main.c9d06f0b.js.map",
     "453.1c48c539.chunk.js.map": "/bookdiary/static/js/453.1c48c539.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9217e28e.css",
-    "static/js/main.640d50f9.js"
+    "static/js/main.c9d06f0b.js"
   ]
 }
