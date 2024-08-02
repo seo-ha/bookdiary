@@ -1,24 +1,31 @@
-import axios from 'axios';
 import './App.css';
-import {useState } from 'react';
+import {createContext, useState } from 'react';
+import kakaoSearch from './hooks/kakaoapi'
+import { Route, Routes } from 'react-router-dom';
+import Home from './component/Home';
+import Search from './pages/Search';
+import BookInfo from './pages/BookInfo';
 
+export const bookContext = createContext();
 
 function App() {
   
-  const Kakao = axios.create({
-    baseURL: 'https://dapi.kakao.com', // 공통 요청 경로를 지정해준다.
-    headers: {
-        Authorization: `KakaoAK 5728823fbd02f54c4a90d1322009a785`,
-    },
-  });
-
-  const kakaoSearch = params =>{
-      return Kakao.get('/v3/search/book',{params})
-  }
 
   const [inputValue, setInputValue] = useState('')
   const [books, setBooks] = useState([])
-
+  
+  const onChange = (e) =>{
+    setInputValue(e.target.value);
+  }
+  const onKeyPress = (e) =>{
+    if(e.keyCode === 13) {
+      getBooks(inputValue);
+    }
+  }
+  
+  const onSearchBooks = () =>{
+    getBooks(inputValue);
+  }
 
   const getBooks = async(value) => {
     try {
@@ -45,14 +52,18 @@ function App() {
   }
   
   return (
-    <div className="App">
-        <input type="text" value={inputValue} onChange={(e)=>setInputValue(e.target.value)}/>
-        <button onClick={()=>getBooks(inputValue)}>버튼</button>
+    
+    <bookContext.Provider value={{books, inputValue, onChange,onKeyPress, onSearchBooks}} >
+      <div className="App">
         
-        <div>
-          {books.map((item, idx)=><p key={idx}>{item.title}<img src={item.thumbnail} alt=''/></p>)}
-        </div>
-    </div>
+        <Routes>
+          <Route path='/' element={<Home/>}></Route>
+          <Route path='/search' element={<Search/>}></Route>
+          <Route path='/bookinfo/:id' element={<BookInfo/>}></Route>
+        </Routes>
+        
+      </div>
+    </bookContext.Provider>
   );
 }
 
