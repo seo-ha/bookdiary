@@ -15,3 +15,9 @@ header {
     
     
 }
+
+.home {
+    header {
+        input {pointer-events: none;}
+    }
+}

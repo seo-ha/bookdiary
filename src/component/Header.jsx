@@ -10,7 +10,7 @@ function Header() {
   return (
     <header>
       <div className='searchBox' onClick={()=>nav('/search')}>
-        <input type="text" placeholder='책 검색하기' disabled/>
+        <input type="text" placeholder='책 검색하기'/>
         <button></button>
       </div>
     </header>

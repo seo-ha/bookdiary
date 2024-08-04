@@ -7,7 +7,7 @@ function Home() {
     const {books} = useContext(bookContext);
     
   return (
-    <div>
+    <div className='home'>
        <Header/>
        
        <div>
