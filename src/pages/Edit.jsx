@@ -1,22 +1,18 @@
 import React from 'react'
-import { useLocation, useNavigate } from 'react-router-dom';
-import Title from '../component/Title';
+import Title from '../component/Title'
+import { useLocation } from 'react-router-dom'
 
-function BookInfo() {
-  
-  const {state} = useLocation();
-  const nav = useNavigate();
-  
-  const choice = () => {
-    nav('/edit',{state:state});
-  }
-  
-  
-  
+function Edit() {
+    
+    const {state} = useLocation();
+    
+    console.log(state);
+    
+    
   return (
-    <div id='Bookinfo'>
-        
-     <Title leftOnclick={()=>choice()} leftTxt={'독후감쓰기'}/>
+    <div id='edit'>
+      
+      <Title leftOnclick={()=>''} leftTxt={'저장'}/>
       
       <div className="infoBox">
         <div className="bookBox">
@@ -32,8 +28,9 @@ function BookInfo() {
           <p className='date'><span>출판일</span> { new Date(state.datetime).toLocaleDateString()}</p>
         </div>
       </div>
+      
     </div>
   )
 }
 
-export default BookInfo;
+export default Edit

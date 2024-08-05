@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './component/Home';
 import Search from './pages/Search';
 import BookInfo from './pages/BookInfo';
+import Edit from './pages/Edit';
 
 export const bookContext = createContext();
 
@@ -35,7 +36,7 @@ function App() {
             const params = {
                 query : value,
                 size : 45,
-                target : 'title'
+                target : ['title','person']
             };
             const result = await kakaoSearch(params);
             if(result){
@@ -60,6 +61,7 @@ function App() {
           <Route path='/' element={<Home/>}></Route>
           <Route path='/search' element={<Search/>}></Route>
           <Route path='/bookinfo/:id' element={<BookInfo/>}></Route>
+          <Route path='/edit' element={<Edit/>}></Route>
         </Routes>
         
       </div>
