@@ -1,71 +1,139 @@
 import './App.css';
-import {createContext, useState } from 'react';
-import kakaoSearch from './hooks/kakaoapi'
+import {createContext, useEffect, useReducer, useRef } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Home from './component/Home';
+import Home from './pages/Home';
 import Search from './pages/Search';
 import BookInfo from './pages/BookInfo';
 import Edit from './pages/Edit';
+import View from './pages/View';
+import New from './pages/New';
 
-export const bookContext = createContext();
+
+function reducer (state, action){
+  let nextState;
+  
+  switch (action.type) {
+    case 'init' : 
+    console.log(state);
+    
+      return action.data;
+    case 'create': { 
+      nextState = [action.data,...state]
+      console.log(state);
+      
+      break
+    }
+    case 'update':{
+      nextState =  state.map((item)=>
+        String(item.id) === String(action.data.id) ? action.data : item)
+        break;
+      }
+    case 'delete': {  
+      nextState = state.filter((item)=> String(item.id) !== String(action.id))
+      break;
+    }
+    default:
+      return state;
+  }
+  
+  localStorage.setItem('diary', JSON.stringify(nextState));
+  return nextState;
+}
+
+export const DiaryStateContent = createContext();
+export const DiaryDispatchContent = createContext();
+
 
 function App() {
   
-
-  const [inputValue, setInputValue] = useState('')
-  const [books, setBooks] = useState([])
+  const [data, dispatch] = useReducer(reducer,[]);
+  const idRef = useRef(0);
   
-  const onChange = (e) =>{
-    setInputValue(e.target.value);
-  }
-  const onKeyPress = (e) =>{
-    if(e.keyCode === 13) {
-      getBooks(inputValue);
+  useEffect(() => {
+    const storedData = localStorage.getItem('diary');
+    if(!storedData){
+      return;
     }
+    const parsedDate = JSON.parse(storedData);
+    
+    if(!Array.isArray(parsedDate)){
+      return ;
+    }
+    
+    let maxId = 0;
+    parsedDate.forEach(item => {
+      if(Number(item.id) > maxId) {
+        maxId = Number(item.id)
+      }
+    });
+    
+    console.log(maxId);
+    
+    idRef.current = maxId + 1 ;
+    
+    dispatch({
+      type : 'init',
+      data : parsedDate
+    })
+    
+    
+  },[])
+  
+  const onCreate = (bookinfo, starpoint, startDay, endDay, content) => {
+    dispatch({
+      type : 'create',
+      data : {
+        id : idRef.current++,
+        bookinfo,
+        starpoint,
+        startDay,
+        endDay,
+        content
+      }
+    })
+    
   }
   
-  const onSearchBooks = () =>{
-    getBooks(inputValue);
+  const onUpdate = (starpoint, startDay, endDay, content) => {
+    dispatch({
+      type : 'update',
+      data : {
+        id : idRef.current++,
+        starpoint,
+        startDay,
+        endDay,
+        content
+      }
+    })
   }
-
-  const getBooks = async(value) => {
-    try {
-        if(value === "") {
-            setBooks([])
-        }else {
-            const params = {
-                query : value,
-                size : 45,
-                target : ['title','person']
-            };
-            const result = await kakaoSearch(params);
-            if(result){
-                setBooks(result.data.documents);
-                console.log(result.data.documents);
-            }else {
-                console.log("fail");
-            }
-            
-        }
-    } catch(error) {
-        console.log('error', error)
-    }
+  
+  const onDelete = (id) => {
+    dispatch({
+      type : 'delete',
+      id 
+    })
   }
+  
+ 
   
   return (
     
-    <bookContext.Provider value={{books, inputValue, onChange,onKeyPress, onSearchBooks}} >
-      <div className="App">
+    <DiaryStateContent.Provider value={data}>
+      <DiaryDispatchContent.Provider value={{onCreate,onUpdate,onDelete}}>
         
+    <div className="App">
         <Routes>
           <Route path='/' element={<Home/>}></Route>
           <Route path='/search' element={<Search/>}></Route>
           <Route path='/bookinfo/:id' element={<BookInfo/>}></Route>
-          <Route path='/edit' element={<Edit/>}></Route>
+          <Route path='/edit/:id' element={<Edit/>}></Route>
+          <Route path='/view/:id' element={<View/>}></Route>
+          <Route path='/new' element={<New/>}></Route>
         </Routes>
         
       </div>
-    </bookContext.Provider>
+      </DiaryDispatchContent.Provider>
+    </DiaryStateContent.Provider>
   );
 }
 

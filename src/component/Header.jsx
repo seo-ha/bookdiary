@@ -1,7 +1,6 @@
 import React from 'react'
-import '../component/style.scss'
+import '../style.scss'
 import { useNavigate } from 'react-router-dom';
-import Search from '../pages/Search';
 
 function Header() {
   

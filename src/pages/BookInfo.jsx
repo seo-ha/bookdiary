@@ -1,6 +1,7 @@
 import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import Title from '../component/Title';
+import BookInfoBox from '../component/BookInfoBox';
 
 function BookInfo() {
   
@@ -8,24 +9,17 @@ function BookInfo() {
   const nav = useNavigate();
   
   const choice = () => {
-    nav('/edit',{state:state});
+    nav(`/new`,{state:state});
   }
-  
-  
   
   return (
     <div id='Bookinfo'>
         
-     <Title leftOnclick={()=>choice()} leftTxt={'독후감쓰기'}/>
+     <Title onClick={()=>choice()} title={'독후감쓰기'}/>
       
       <div className="infoBox">
-        <div className="bookBox">
-          <strong>{state.title}</strong>
-          <div className='imgBox'>
-              <img src={state.thumbnail} alt="" />
-          </div>
-          <p>{state.authors}</p>
-        </div>
+        <BookInfoBox title={state.title} thumbnail={state.thumbnail} authors={state.authors} />
+        
         <div className="txtBox">
           <p><span>줄거리</span> {state.contents}</p>
           <p className='date'><span>출판사</span> { state.publisher }</p>

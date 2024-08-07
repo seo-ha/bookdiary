@@ -1,34 +1,35 @@
 import React, { useContext } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { DiaryDispatchContent } from '../App';
 import Editor from '../component/Editor';
-import { UseDiary } from '../hooks/UseDiary';
 
-function Edit() {
-    const params = useParams()
-    const {onUpdate} = useContext(DiaryDispatchContent);
+function New() {
+    const {state} = useLocation();
+    const {onCreate} = useContext(DiaryDispatchContent);
     const nav = useNavigate()
-
+    
+    
     const onSubmit = (input) => {
-        onUpdate(
+        onCreate(
+            input.bookinfo,
             input.starpoint,
             input.startDay,
             input.endDay,
             input.content
         )
+        
         nav('/', {replace: true})
+        
     }
-    
-    const curDiaryItem = UseDiary(params.id)
 
     
   return (
     <div id='edit'>
         
-        <Editor initData={curDiaryItem} onSubmit={onSubmit}/>
+        <Editor initData={state} onSubmit={onSubmit}/>
 
     </div>
   )
 }
 
-export default Edit
+export default New
