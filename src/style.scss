@@ -1,6 +1,6 @@
 header {
     
-    display: flex; align-items: center; height: 60px; padding: 8px 15px; background-color: #333; border-bottom: 1px solid #eaeaea;
+    display: flex; align-items: center; height: 60px; width: 100%; padding: 8px 15px; background-color: #333; border-bottom: 1px solid #eaeaea;
     
     .searchBox {
         display: flex; align-items: center; flex-grow: 1; height: 100%; border-radius: 10px; background-color: white; padding: 0 15px;
@@ -19,7 +19,7 @@ header {
     
     display: flex; align-items: center; justify-content: space-between; height: 60px; padding: 0 20px; box-shadow: 0 0 0.5em rgba($color: #000000, $alpha: 0.15); 
     
-    .back { border: 1px solid white; display: block; min-width: 23; width: 23px; height: 23px; background: url(./assets/ico_back.png) no-repeat center center / 100% auto;}
+    .back { border: 1px solid red; display: block; min-width: 23px; width: 23px; height: 23px; background: url(./assets/ico_back.png) no-repeat center center / 100% auto;}
     
     .right {display: flex; align-items: center; gap:0 8px; font-size: 15px; font-weight: 600;}
     
