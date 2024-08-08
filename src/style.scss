@@ -3,13 +3,13 @@ header {
      height: 60px; padding: 8px 15px; background-color: #333; border-bottom: 1px solid #eaeaea;
     
     .searchBox {
-        display: flex; align-items: center; width: 100%; height: 100%; border-radius: 10px; background-color: white; padding: 0 15px;
+        display: flex; align-items: center; flex-grow: 1; height: 100%; border-radius: 10px; background-color: white; padding: 0 15px;
         
         input {
             flex-grow: 1; font-size: 15px; 
         }
         
-        button {width: 22px; height: 22px; background: url(./assets/ico_search.png) no-repeat center center / 100% auto;}
+        button { min-width: 22px; width: 22px; height: 22px; background: url(./assets/ico_search.png) no-repeat center center / 100% auto;}
     }
     
     
@@ -19,7 +19,7 @@ header {
     
     display: flex; align-items: center; justify-content: space-between; height: 60px; padding: 0 20px; box-shadow: 0 0 0.5em rgba($color: #000000, $alpha: 0.15); 
     
-    .back {display: block; width: 23px; height: 23px; background: url(./assets/ico_back.png) no-repeat center center / 100% auto;}
+    .back {display: block; min-width: 23; width: 23px; height: 23px; background: url(./assets/ico_back.png) no-repeat center center / 100% auto;}
     
     .right {display: flex; align-items: center; gap:0 8px; font-size: 15px; font-weight: 600;}
     
@@ -54,7 +54,7 @@ header {
             .txtBox {
                 flex-grow: 1; display: flex; flex-wrap: wrap; justify-content: space-between; padding-left: 20px; text-align: left;
                 
-                p.title {display: block; width: 100%; margin-bottom: 10px; font-size: 16px; word-break: keep-all; }
+                p.title {display: block; width: 100%; margin-bottom: 10px; font-size: 16px; font-weight: 500; word-break: keep-all; }
                 p.author {font-size: 13px;}
                 p.date {font-size: 13px; color: #888;}
             }
@@ -75,7 +75,7 @@ header {
         
         .bookBox {
             
-            strong { display: block; margin-bottom: 20px; font-size: 20px; font-weight: 600; word-break: keep-all;}
+            strong { display: block; margin-bottom: 20px; font-size: 20px; font-weight: 500; word-break: keep-all;}
             
             .imgBox {
                 position: relative; width: fit-content; margin: auto; box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.6);
@@ -128,7 +128,7 @@ header {
             .react-datepicker-wrapper {position: relative; width: 100%;}
             .react-datepicker__tab-loop {position: absolute;}
             .datePicker,
-            textarea {width: 100%; height: 38px; padding: 0 15px; border:1px solid #eaeaea; border-radius: 5px; font-size: 14px;}
+            textarea {width: 100%; height: 40px; padding: 0 15px; border:1px solid #eaeaea; border-radius: 5px; font-size: 14px;}
             textarea {height: 120px; padding: 15px; resize: none; }
             textarea::placeholder {color: #ccc;}
             
@@ -156,7 +156,7 @@ header {
         
     }
     
-    .delateBtn { display: flex; align-items: center; justify-content: center; margin-top: 50px; width: 100%; height: 45px; border-radius: 5px;background-color: #f9c9c9; color: #a31515;  }
+    .delateBtn { display: inline-block; margin: 30px auto 0; text-align: center; color: #888;  }
     
     
 }
