@@ -1,7 +1,7 @@
-
+#root {max-width: 500px; margin: auto;}
 header {
     
-    display: flex; align-items: center; height: 60px; width: 100%; padding: 8px 15px; background-color: #333; border-bottom: 1px solid #eaeaea;
+    display: flex; align-items: center; height: 60px; width: 100%; padding: 8px 15px; background: url(./assets/wood_bg.jpg) no-repeat center center / cover;
 
     .searchBox {
         display: flex; align-items: center; justify-content: space-between; width: 100%; height: 100%; border-radius: 10px; background-color: white; padding: 0 15px;
@@ -20,7 +20,7 @@ header {
     
     .back { display: block; min-width: 23px; width: 23px; height: 23px; background: url(./assets/ico_back.png) no-repeat center center / 100% auto;}
     
-    .right {display: flex; align-items: center; gap:0 8px; font-size: 15px; font-weight: 600;}
+    .right {display: flex; align-items: center; gap:0 8px; font-size: 15px; font-weight: 500;}
     
 }
 
@@ -29,7 +29,27 @@ header {
         input {pointer-events: none;}
     }
     
-    .readbook {}
+    .listBox {
+        display: flex; flex-wrap: wrap; justify-content: space-between; padding: 20px 15px; background-color: #f7f7f7;
+        
+        .readbook {
+            position: relative; width: 48.5%; padding-top: 20px; margin-bottom: 30px; background-color: #fff; z-index: 1;
+            
+            &::after {content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 50%; background: url(./assets/wood_bg.jpg) no-repeat center bottom / cover; z-index: -1;}
+            
+            .imgBox {
+                position: relative; width: fit-content; margin: auto; box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.6);
+                
+                &::after {content: ""; position: absolute; top: 0; left: 0; width: 30%; height: 100%; background: linear-gradient(to right, #1e1e1e6e, #c1c1c1a3, #ffffff00 25%);}
+                
+                img {height: 150px;}
+            }
+            
+            p { display: block; width: calc(100% - 40px); margin: 20px auto 0; padding-bottom: 20px; overflow: hidden; font-size: 13px; text-overflow: ellipsis; white-space: nowrap; text-align: center; color: white; }
+            
+        }
+        
+    }
 }
 
 #search {
@@ -153,7 +173,7 @@ header {
         
     }
     
-    .delateBtn { display: inline-block; margin: 30px auto 0; text-align: center; color: #888;  }
+    .delateBtn { display: inline-block; margin: 25px auto 0; text-align: center; color: #888; font-size: 13px;  }
     
     
 }

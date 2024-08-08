@@ -12,7 +12,7 @@ function Home() {
     <div id='home'>
        <Header/>
        
-       <ul>
+       <ul className='listBox'>
           {
               data.map((item)=> <Readbook key={item.id} data={item}/>)
           }
