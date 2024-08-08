@@ -12,11 +12,13 @@ function Home() {
     <div id='home'>
        <Header/>
        
-       <ul className='listBox'>
-          {
-              data.map((item)=> <Readbook key={item.id} data={item}/>)
-          }
-        </ul>
+       <div className='listBox'>
+            {
+              data.length === 0
+               ? <p className='emptyList'>읽은 책이 없어요 :&#40; </p>
+               : <ul> { data.map((item)=> <Readbook key={item.id} data={item}/>) }</ul>
+            }
+       </div>
     </div>
   )
 }

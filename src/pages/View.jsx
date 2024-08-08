@@ -64,6 +64,10 @@ function View() {
             <ul className='inputBox'>
                 <li className='starBox'><p>별점 :</p> {ratingStarHandle()}</li>
                 <li className='col'>
+                    <p>줄거리</p>
+                    <span className='txt'>{state.bookinfo?.contents}</span>
+                </li>
+                <li className='col'>
                     <div className='flexBox'>
                         <p>책을 읽은 기간</p>
                         <span><small className="readingDay">{readingDay()}</small> 일</span>
@@ -87,6 +91,14 @@ function View() {
                 <li className='col'>
                     <p>후기</p>
                     <textarea name="content" id="" value={state.content} placeholder='책을 읽고 어떤 느낌이 들었나요?' readOnly></textarea>
+                </li>
+                <li className='col'>
+                    <p>출판사</p>
+                    <span className='txt'> {state.bookinfo?.publisher}</span>
+                </li>
+                <li className='col'>
+                    <p>출판일</p>
+                    <span className='txt'>{ new Date(state.bookinfo?.datetime).toLocaleDateString()}</span>
                 </li>
             </ul>
             
