@@ -24,7 +24,6 @@ function Editor({initData, onSubmit}) {
         }
         
     },[initData])
-    console.log(initData);
     
     const [input, setInput] = useState({
         bookinfo : state,
@@ -58,8 +57,8 @@ function Editor({initData, onSubmit}) {
     }
     
     const calculationDay = () => {
-        const start = new Date(startDate);
-        const end = new Date(endDate);
+        const start = new Date(input.startDay);
+        const end = new Date(input.endDay);
 
         // 두 날짜 간의 차이를 초 단위로 계산
         const time = end - start;
@@ -113,7 +112,7 @@ function Editor({initData, onSubmit}) {
                         name='startDay'
                         dateFormat='yyyy.MM.dd'
                         shouldCloseOnSelect
-                        selected={startDate}
+                        selected={input.startDay}
                         onChange={(date)=> setStartDate(date)}
                     />
                     <DatePicker className='datePicker'
@@ -121,8 +120,8 @@ function Editor({initData, onSubmit}) {
                         name='endDay'
                         dateFormat='yyyy.MM.dd'
                         shouldCloseOnSelect
-                        selected={endDate}
-                        minDate={startDate}
+                        selected={input.endDay}
+                        minDate={input.startDay}
                         onChange={(date)=> setEndDate(date)}
                     />
                     

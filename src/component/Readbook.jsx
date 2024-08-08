@@ -2,7 +2,6 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function Readbook(item) {
-    console.log(item.data.bookinfo);
     
     const nav = useNavigate()
     

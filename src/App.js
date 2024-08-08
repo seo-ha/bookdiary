@@ -14,18 +14,13 @@ function reducer (state, action){
   
   switch (action.type) {
     case 'init' : 
-    console.log(state);
-    
       return action.data;
     case 'create': { 
       nextState = [action.data,...state]
-      console.log(state);
-      
       break
     }
     case 'update':{
-      nextState =  state.map((item)=>
-        String(item.id) === String(action.data.id) ? action.data : item)
+      nextState =  state.map((item)=> String(item.id) === String(action.data.id) ? action.data : item)
         break;
       }
     case 'delete': {  
@@ -67,8 +62,6 @@ function App() {
       }
     });
     
-    console.log(maxId);
-    
     idRef.current = maxId + 1 ;
     
     dispatch({
@@ -94,11 +87,12 @@ function App() {
     
   }
   
-  const onUpdate = (starpoint, startDay, endDay, content) => {
+  const onUpdate = (id,bookinfo, starpoint, startDay, endDay, content) => {
     dispatch({
       type : 'update',
       data : {
-        id : idRef.current++,
+        id,
+        bookinfo,
         starpoint,
         startDay,
         endDay,

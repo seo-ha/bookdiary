@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import kakaoSearch from '../hooks/kakaoapi'
 import BookList from '../component/BookList';
+import { useNavigate } from 'react-router-dom';
 
 function Search() {
-    
+  const nav = useNavigate()
   const [inputValue, setInputValue] = useState('')
   const [books, setBooks] = useState([])
   
@@ -45,6 +46,7 @@ function Search() {
   return (
     <div id='search'>
         <header>
+          <button className='back' onClick={()=>nav('/',{replace:true})}></button>
           <div className='searchBox'>
             <input type="text" value={inputValue} onChange={(e) => onChange(e)} onKeyDown={(e)=>onKeyPress(e)} placeholder='어떤 책을 읽었나요?'/>
             <button onClick={()=>onSearchBooks()}></button>
