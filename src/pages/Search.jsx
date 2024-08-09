@@ -1,36 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import kakaoSearch from '../hooks/kakaoapi'
 import BookList from '../component/BookList';
 import { useNavigate } from 'react-router-dom';
 
 function Search() {
-  const nav = useNavigate();
-  const [inputValue, setInputValue] = useState('');
-  const [books, setBooks] = useState([]);
-  const [loading ,setLoading] = useState(true);
+  const nav = useNavigate()
+  const [inputValue, setInputValue] = useState('')
+  const [books, setBooks] = useState([])
   
   const onChange = (e) =>{
     setInputValue(e.target.value);
   }
   const onKeyPress = (e) =>{
     if(e.keyCode === 13) {
-      setTimeout(() => {
-        setLoading(false);
-      }, 300);
-      setLoading(true);
-      
       getBooks(inputValue);
-      
     }
   }
   const onSearchBooks = () =>{
-    setTimeout(() => {
-      setLoading(false);
-    }, 300);
-    setLoading(true);
-    
     getBooks(inputValue);
-    
   }
 
   const getBooks = async(value) => {
@@ -65,13 +52,9 @@ function Search() {
             <button onClick={()=>onSearchBooks()}></button>
           </div>
         </header>
-        {
-          loading
-          ? <div className='loading'></div>
-          : <ul className='listBox'>
-              {books.map((item, idx) => <BookList key={idx} idx={idx} item={item}/>)}
-            </ul>
-        }
+        <ul className='listBox'>
+          {books.map((item, idx) => <BookList key={idx} idx={idx} item={item}/>)}
+        </ul>
     </div>
   )
 }
