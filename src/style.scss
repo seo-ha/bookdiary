@@ -1,4 +1,13 @@
-#root {max-width: 500px; margin: auto;}
+#root {position: relative; max-width: 500px; margin: auto;}
+
+.loading { animation: load 1s linear infinite; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 30px; aspect-ratio: auto 1/1; background-color: lightblue; border-radius: 50%; }
+
+@keyframes load {
+    0% {width: 30px;}
+    50% {width: 70px;}
+    100% {width: 30px;}
+}
+
 header {
     
     display: flex; align-items: center; height: 60px; width: 100%; padding: 8px 15px; background: url(./assets/wood_bg.jpg) no-repeat center center / cover;
@@ -37,9 +46,9 @@ header {
            display: flex; flex-wrap: wrap; justify-content: space-between;
         }
         .readbook {
-            position: relative; width: 48.5%; height: fit-content; padding-top: 20px; margin-bottom: 30px; background-color: #fff; z-index: 1;
+            position: relative; width: 48.5%; padding-top: 20px; margin-bottom: 20px; border-radius: 5px; background-color: #fff; overflow: hidden; box-shadow: 0 0 9px #e7e7e7; z-index: 1;
             
-            &::after {content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 50%; background: url(./assets/wood_bg.jpg) no-repeat center bottom / cover; z-index: -1;}
+            &::after {content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 45%; background: url(./assets/wood_bg.jpg) no-repeat center bottom / cover; z-index: -1;}
             
             .imgBox {
                 position: relative; width: fit-content; margin: auto; box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.6);
@@ -50,12 +59,12 @@ header {
                 img {height: 150px;}
             }
             
-            p { display: block; width: calc(100% - 40px); margin: 20px auto 0; padding-bottom: 20px; overflow: hidden; font-size: 13px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; text-align: center; color: white; }
+            p { display: block; width: calc(100% - 30px); margin: 15px auto 0; padding-bottom: 15px; overflow: hidden; font-size: 12px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; text-align: center; color: white; }
             
         }
         
         
-        .emptyList { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 20px; color: #ccc;}
+        .emptyList { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 18px; color: #ccc;}
         
     }
 }

@@ -1,5 +1,5 @@
 import './App.css';
-import {createContext, useEffect, useReducer, useRef } from 'react';
+import {createContext, useEffect, useReducer, useRef, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Search from './pages/Search';
@@ -41,6 +41,7 @@ export const DiaryDispatchContent = createContext();
 
 function App() {
   
+  const [loading ,setLoading] = useState(true);
   const [data, dispatch] = useReducer(reducer,[]);
   const idRef = useRef(0);
   
@@ -52,6 +53,7 @@ function App() {
     const parsedDate = JSON.parse(storedData);
     
     if(!Array.isArray(parsedDate)){
+      setLoading(false);
       return ;
     }
     
@@ -69,6 +71,7 @@ function App() {
       data : parsedDate
     })
     
+    setLoading(false)
     
   },[])
   
@@ -108,11 +111,13 @@ function App() {
     })
   }
   
- 
+  if(loading) {
+    return <div className='loading'></div>
+  }
   
   return (
     
-    <DiaryStateContent.Provider value={data}>
+      <DiaryStateContent.Provider value={data}>
       <DiaryDispatchContent.Provider value={{onCreate,onUpdate,onDelete}}>
         
     <div className="App">
@@ -129,6 +134,7 @@ function App() {
       </DiaryDispatchContent.Provider>
     </DiaryStateContent.Provider>
   );
+  
 }
 
 export default App;

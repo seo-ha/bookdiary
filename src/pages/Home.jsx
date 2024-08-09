@@ -6,7 +6,7 @@ import Readbook from '../component/Readbook';
 function Home() {
     
   const data = useContext(DiaryStateContent);
-  console.log(data);
+  // console.log(data);
   
   return (
     <div id='home'>
@@ -15,7 +15,7 @@ function Home() {
        <div className='listBox'>
             {
               data.length === 0
-               ? <p className='emptyList'>읽은 책이 없어요 :&#40; </p>
+               ? <p className='emptyList'>읽은 책이 없어요 :&#40; <br/>책을 검색해 독후감을 작성해주세요.</p>
                : <ul> { data.map((item)=> <Readbook key={item.id} data={item}/>) }</ul>
             }
        </div>

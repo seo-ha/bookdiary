@@ -1,12 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import kakaoSearch from '../hooks/kakaoapi'
 import BookList from '../component/BookList';
 import { useNavigate } from 'react-router-dom';
 
 function Search() {
-  const nav = useNavigate()
-  const [inputValue, setInputValue] = useState('')
-  const [books, setBooks] = useState([])
+  const nav = useNavigate();
+  const [inputValue, setInputValue] = useState('');
+  const [books, setBooks] = useState([]);
+  const [loading ,setLoading] = useState(true);
+  
+  useEffect(()=>{
+    if(!Array.isArray(books)){
+      setLoading(false);
+      return ;
+    }
+    
+    setLoading(false);
+  },[])
   
   const onChange = (e) =>{
     setInputValue(e.target.value);
@@ -52,9 +62,13 @@ function Search() {
             <button onClick={()=>onSearchBooks()}></button>
           </div>
         </header>
-        <ul className='listBox'>
-          {books.map((item, idx) => <BookList key={idx} idx={idx} item={item}/>)}
-        </ul>
+        {
+          loading
+          ? <div className='loading'></div>
+          : <ul className='listBox'>
+              {books.map((item, idx) => <BookList key={idx} idx={idx} item={item}/>)}
+            </ul>
+        }
     </div>
   )
 }
