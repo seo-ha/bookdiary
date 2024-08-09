@@ -1,6 +1,6 @@
 #root {position: relative; max-width: 500px; margin: auto;}
 
-.loading { animation: load 1s linear infinite; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 30px; aspect-ratio: auto 1/1; background-color: lightblue; border-radius: 50%; }
+.loading { animation: load 1s linear infinite; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 30px; aspect-ratio: auto 1/1; background-color: lightblue; border-radius: 50%; }
 
 @keyframes load {
     0% {width: 30px;}

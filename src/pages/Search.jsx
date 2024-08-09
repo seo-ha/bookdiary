@@ -9,25 +9,28 @@ function Search() {
   const [books, setBooks] = useState([]);
   const [loading ,setLoading] = useState(true);
   
-  useEffect(()=>{
-    if(!Array.isArray(books)){
-      setLoading(false);
-      return ;
-    }
-    
-    setLoading(false);
-  },[])
-  
   const onChange = (e) =>{
     setInputValue(e.target.value);
   }
   const onKeyPress = (e) =>{
     if(e.keyCode === 13) {
+      setTimeout(() => {
+        setLoading(false);
+      }, 300);
+      setLoading(true);
+      
       getBooks(inputValue);
+      
     }
   }
   const onSearchBooks = () =>{
+    setTimeout(() => {
+      setLoading(false);
+    }, 300);
+    setLoading(true);
+    
     getBooks(inputValue);
+    
   }
 
   const getBooks = async(value) => {

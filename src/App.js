@@ -53,7 +53,12 @@ function App() {
     const parsedDate = JSON.parse(storedData);
     
     if(!Array.isArray(parsedDate)){
-      setLoading(false);
+      
+      setTimeout(()=>{
+        setLoading(false);
+      },300)
+      setLoading(true);
+      
       return ;
     }
     
@@ -71,8 +76,7 @@ function App() {
       data : parsedDate
     })
     
-    setLoading(false)
-    
+  
   },[])
   
   const onCreate = (bookinfo, starpoint, startDay, endDay, content) => {
