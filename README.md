@@ -1,7 +1,7 @@
 # 독후감 사이트.
 
 ![미리보기](https://github.com/seo-ha/bookdiary/blob/main/src/assets/portfolio.jpg)
-+ Next.js, Kakao.api를 이용한 독후감 사이트입니다
++ React, Kakao.api를 이용한 독후감 사이트입니다
 + 링크 : https://seo-ha.github.io/portfolio/
 <br/>
 
