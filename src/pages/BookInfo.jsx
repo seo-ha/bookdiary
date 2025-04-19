@@ -2,6 +2,7 @@ import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import Title from '../component/Title';
 import BookInfoBox from '../component/BookInfoBox';
+import Review from '../component/Review';
 
 function BookInfo() {
   
@@ -25,6 +26,9 @@ function BookInfo() {
           <p className='date'><span>출판사</span> { state.publisher }</p>
           <p className='date'><span>출판일</span> { new Date(state.datetime).toLocaleDateString()}</p>
         </div>
+      
+        <Review/>
+        
       </div>
     </div>
   )

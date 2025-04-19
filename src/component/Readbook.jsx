@@ -7,7 +7,7 @@ function Readbook(item) {
     const nav = useNavigate()
     
   return (
-    <li className='readbook' onClick={ ()=>nav(`/view/${item.data.id}`,{ state : item.data})} >
+    <li className='read-book' onClick={ ()=>nav(`/view/${item.data.id}`,{ state : item.data})} >
       <div className="imgBox">
         {
           !item.data.bookinfo?.thumbnail

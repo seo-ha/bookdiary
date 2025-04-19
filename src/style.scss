@@ -1,4 +1,5 @@
-#root {position: relative; max-width: 500px; margin: auto;}
+#root {position: relative; max-width: 500px; margin: auto; overflow: hidden;}
+.App {height: 100dvh;}
 
 .loading { animation: load 1s linear infinite; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 30px; aspect-ratio: auto 1/1; background-color: lightblue; border-radius: 50%; }
 
@@ -8,11 +9,54 @@
     100% {width: 30px;}
 }
 
+/*header*/
 header {
     
-    display: flex; align-items: center; height: 60px; width: 100%; padding: 8px 15px; background: url(./assets/wood_bg.jpg) no-repeat center center / cover;
+    display: flex; align-items: center; justify-content: space-between; height: 60px; width: 100%; padding: 8px 15px; background: url(./assets/wood_bg.jpg) no-repeat center center / cover;
 
-    .searchBox {
+    .logo {font-size: 22px; color: white;}
+
+    .header-nav {
+        display: flex; align-items: center; justify-content: end; gap:0 20px; flex-grow: 1; height: 100%;
+        
+        .search-btn {display: block; width: 22px; height: 22px; mask-image: url(./assets/ico_search.svg); mask-size: cover; background-color: #fff; }
+    }
+}
+
+.ham {
+    position: relative; display: block; width: 22px; height: 18px;
+
+    span {
+        position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 100%; height: 2px; background-color: white;
+    }
+
+    &::after {content: ""; position: absolute; top: 0; left: 0; display: block; width: 100%; height: 2px; background-color: white;}
+    &::before {content: ""; position: absolute; bottom: 0; left: 0; display: block; width: 100%; height: 2px; background-color: white;}
+}
+
+nav {
+    position: absolute; top: 0; right: -100%; width: 85%; height: 100dvh; padding: 60px 20px 0; border-left: 1px solid #eaeaea; transition: right .3s; background-color: #fff; z-index: 10;
+
+    &.nav__on {right: 0;}
+    
+    .nav-close {
+        position: absolute; top: 20px; right: 20px; width: 25px; height: 25px;
+
+        &::after {content: ""; position: absolute; top: 50%; left: 50%; transform:  translate(-50%, -50%) rotate(45deg); display: block; width: 100%; height: 2px; background-color: #000;}
+        &::before {content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg); display: block; width: 100%; height: 2px; background-color: #000;}
+    }
+
+    .nav-li {
+        position: relative; text-align: center; margin-bottom: 20px;
+        a {display: block; font-size: 20px; color: #141414;}
+    }
+}
+
+.search-bar {
+    
+    display: flex; align-items: center; height: 60px; width: 100%; padding: 0 15px 15px; background: url(./assets/wood_bg.jpg) no-repeat center center / cover;
+
+    .search-box {
         display: flex; align-items: center; justify-content: space-between; width: 100%; height: 100%; border-radius: 10px; background-color: white; padding: 0 15px;
         
         input {display: inline-block; width: calc(100% - 35px); font-size: 15px;}
@@ -23,7 +67,7 @@ header {
     
 }
 
-#titleBox {
+.title-box {
     
     display: flex; align-items: center; justify-content: space-between; height: 60px; padding: 0 20px; box-shadow: 0 0 0.5em rgba($color: #000000, $alpha: 0.15); 
     
@@ -33,19 +77,30 @@ header {
     
 }
 
-#home {
-    
-    header {
-        input {pointer-events: none;}
+/*login*/
+.login {
+    padding: 60px 20px;
+
+    .login-container { width: 100%; max-width: 400px; margin: auto; padding: 30px 20px; border-radius: 10px; border: 1px solid #eaeaea; box-shadow: 1px 1px 1rem 0 rgba(0, 0, 0, 0.1);}
+    .login-input {
+        display: flex; align-items: center; height: 48px; border: 1px solid #eaeaea; border-radius: 10px;
+
+        & + .login-input {margin-top: 15px;}
+
+        input {display: block; padding: 0 20px; height: 100%;}
     }
-    
-    .listBox {
+    button {display: block; width: 100%; height: 48px; margin-top: 30px; font-size: 18px; font-weight: 500; color: #fff; border-radius: 5px; background-color: #078035;}
+}
+
+.home {
+
+    .home-list {
         height: calc(100dvh - 60px); padding: 20px 15px; background-color: #f7f7f7;
         
         ul {
            display: flex; flex-wrap: wrap; justify-content: space-between;
         }
-        .readbook {
+        .read-book {
             position: relative; width: 48.5%; padding-top: 20px; margin-bottom: 20px; border-radius: 5px; background-color: #fff; overflow: hidden; box-shadow: 0 0 9px #e7e7e7; z-index: 1;
             
             &::after {content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 45%; background: url(./assets/wood_bg.jpg) no-repeat center bottom / cover; z-index: -1;}
@@ -64,7 +119,7 @@ header {
         }
         
         
-        .emptyList { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 18px; color: #ccc;}
+        .home-list__empty { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 18px; color: #ccc;}
         
     }
 }
@@ -99,6 +154,8 @@ header {
         }
         
     }
+
+    .search--info-txt {padding-top: 30px; text-align: center; font-size: 20px; color: #ccc;}
 }
 
 
@@ -106,7 +163,7 @@ header {
     
     .infoBox {
         
-        padding: 30px 20px 40px;
+        height: calc(100dvh - 120px); padding: 30px 20px 40px; overflow-y: auto; 
         
         .bookBox {
             
@@ -134,7 +191,7 @@ header {
 
 #edit {
     
-    .inner { padding: 30px 20px 50px;}
+    .inner {height: calc(100dvh - 120px); padding: 30px 20px 50px; overflow-y: auto;}
     
     .bookBox {
             
@@ -195,4 +252,16 @@ header {
     .delateBtn { display: inline-block; margin: 25px auto 0; text-align: center; color: #888; font-size: 13px;  }
     
     
+}
+
+/*리뷰*/
+.review { margin-top: 25px; border-top: 1px solid #eaeaea;}
+.review-title { display: block; margin:25px 0 15px; font-size: 15px;}
+.review_input {display: flex; align-items: center; height: 48px; width: 100%; border: 1px solid #eaeaea; border-radius: 10px; overflow: hidden;
+    input {display: block; flex-grow: 1; padding: 0 20px; font-size: 15px;}
+    button {width: 80px; height: 100%; background-color: #078035; color: #fff;}
+}
+.review--chat { margin-top: 25px;
+    li { display: flex; justify-content: space-between; font-size: 15px; margin-bottom: 15px;}
+    span { align-self: flex-end; margin-left: 10px; font-size: 13px; color: #888;}
 }

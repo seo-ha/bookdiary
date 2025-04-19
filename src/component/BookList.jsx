@@ -8,7 +8,7 @@ function BookList({idx, item}) {
     const nav = useNavigate();
     
     return (
-        <li className='list' onClick={()=> nav(`/bookinfo/${idx}`,{state:item})}>
+        <div className='list' onClick={()=> nav(`/bookinfo/${idx}`,{state:item})}>
             <div className="imgBox">
                 {
                     !item.thumbnail
@@ -21,7 +21,7 @@ function BookList({idx, item}) {
                 <p className='author'>{item.authors}</p>
                 <p className='date'>{ new Date(item.datetime).toLocaleDateString()}</p>
             </div>
-        </li>
+        </div>
     )
 }
 

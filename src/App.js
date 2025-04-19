@@ -1,4 +1,3 @@
-import './App.css';
 import {createContext, useEffect, useReducer, useRef } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
@@ -7,6 +6,8 @@ import BookInfo from './pages/BookInfo';
 import Edit from './pages/Edit';
 import View from './pages/View';
 import New from './pages/New';
+import Header from './component/Header';
+import Login from './pages/Login';
 
 
 function reducer (state, action){
@@ -116,6 +117,9 @@ function App() {
       <DiaryDispatchContent.Provider value={{onCreate,onUpdate,onDelete}}>
         
     <div className="App">
+
+        <Header/>
+
         <Routes>
           <Route path='/' element={<Home/>}></Route>
           <Route path='/search' element={<Search/>}></Route>
@@ -123,6 +127,7 @@ function App() {
           <Route path='/edit/:id' element={<Edit/>}></Route>
           <Route path='/view/:id' element={<View/>}></Route>
           <Route path='/new' element={<New/>}></Route>
+          <Route path='/login' element={<Login/>}></Route>
         </Routes>
         
       </div>

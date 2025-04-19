@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Title from '../component/Title'
-import { useLocation, useNavigate} from 'react-router-dom'
+import { useLocation} from 'react-router-dom'
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -8,9 +8,7 @@ import { ko } from 'date-fns/locale';
 import BookInfoBox from '../component/BookInfoBox';
 
 function Editor({initData, onSubmit}) {
-    
-    const nav = useNavigate()
-    
+
     const {state} = useLocation();
     
     const [startDate, setStartDate] = useState(new Date());

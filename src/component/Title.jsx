@@ -6,7 +6,7 @@ function Title({ title, onClick}) {
     const nav = useNavigate();
     
   return (
-    <div id="titleBox">
+    <div className="title-box">
         <button className='back' onClick={() => nav(-1)}></button>
         <div className="right">
             <button onClick={onClick}>{title}</button>
